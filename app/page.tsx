@@ -12,6 +12,12 @@ import {
 } from '@/components/ui/card';
 
 export default async function Component() {
+
+  const response = await fetch('https://apis.codante.io/api/orders-api/orders')
+  const data = await response.json()
+
+  console.log(data.data)
+
   return (
     <main className="container px-1 py-10 md:p-10">
       <Card>
@@ -26,7 +32,7 @@ export default async function Component() {
           </div>
         </CardHeader>
         <CardContent>
-          <OrdersTable />
+          <OrdersTable data={data.data} />
           <div className="mt-8">
             <Pagination />
           </div>
